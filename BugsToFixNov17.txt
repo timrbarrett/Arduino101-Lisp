@@ -1,0 +1,41 @@
+Bugs in the Arduino code:
+
+Showstoppers: none
+Workarounds: 6
+
+    Fix the unexpected \00 in sd card output. (Bug)
+        fix: with if statement
+        workaround: ignore undesired characters.
+
+
+    Fix the ()=>()() problem - processing generates a result then evals again to generate () as a result (Bug)
+        consequence: reduces cpu time available.
+        fix: loop code needs resequencing
+        workaround: ignore extra values. 
+    Related(?) Fix the rx20 limit.(Enhancement)
+
+
+    Fix the ylisp code needing processing twice. (Inelegant)
+        consequence: reduces cpu time available
+        workaround: ignore extra processing overhead.
+
+
+    Fix yLisp not starting processing everytime.(Intermittent Bug)
+        consequence: reduces multiple reboots required.
+        workaround: startup is more uncertain, time consuming for user..
+
+
+    Fix BLE not appearing everytime.(Intermittent Bug)
+        consequence: reduces multiple reboots required.
+        workaround: startup is more uncertain, time consuming for user..
+
+
+    Fix BLE not appearing when powered up by battery. (Bug)
+        consequence: booting can only happen when tethered.
+        workaround: startup is more uncertain, time consuming for user..
+
+AI2
+
+    No strings received ... is a reality of the experimental BLE implementation.
+
+Work around: implement integer-based two-character or four-character response.
