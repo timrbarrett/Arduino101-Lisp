@@ -98,7 +98,7 @@ extern "C" {
 
 #define LEX_DEBUG(x) //Serial.println(x);
 #define PARSE_DEBUG(x)  // Serial.print(x);
-#define EVAL_DEBUG(x) Serial.print(x);
+#define EVAL_DEBUG(x) //Serial.print(x);
 #define LOOP_DEBUG(x) //Serial.print(x);
 
 /* BLE */
@@ -1116,19 +1116,21 @@ static YLispValue *builtin_AD5252_Write(YLispValue *args)
   //----------------------------------------------------------------------------------------
   //void AD5252_Write(byte ch, byte x)    //To use send channel (1 or 2) and byte 0-255 = 0-1K ohms
   // USE: (AD5252 1 255) ; set optical resistance to max
-  //YLispValue* channel = ((args)->v.cell.car);
-  //YLispValue* rest = ((args)->v.cell.cdr);
-  //YLispValue* val =    ((rest)->v.cell.car);
+  YLispValue* channel = ((args)->v.cell.car);
+  YLispValue* rest = ((args)->v.cell.cdr);
+  YLispValue* val =    ((rest)->v.cell.car);
 
-  //byte byte_channel = (byte)val->v.i;
-  //byte byte_val = (byte)val->v.i;
+  byte byte_channel = (byte)val->v.i;
+  byte byte_val = (byte)val->v.i;
 
   //if (byte_channel <= 1)  {               //Error checking on channel value
   //  byte_channel = 1;                  //Channel = 1 for values <= 1
   //}
   //else byte_channel = 3;                //Channel = 3 for values >1 (as the AD5252 sees it)
-  byte byte_channel=1;
-  byte byte_val = 0;
+  //byte 
+  byte_channel=1;
+  //byte byte_val = 0;
+  
   //Serial.print('[');
   Wire.beginTransmission(Addr);   // Start I2C transmission
   //Serial.print(Addr); Serial.print(' ');
